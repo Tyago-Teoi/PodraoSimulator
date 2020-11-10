@@ -1,0 +1,11 @@
+/home/gnicolau/Desktop/USP/2020-2/SO/Projeto/HelloWorld/bin/Debug/netcoreapp2.1/HelloWorld.deps.json
+/home/gnicolau/Desktop/USP/2020-2/SO/Projeto/HelloWorld/bin/Debug/netcoreapp2.1/HelloWorld.runtimeconfig.json
+/home/gnicolau/Desktop/USP/2020-2/SO/Projeto/HelloWorld/bin/Debug/netcoreapp2.1/HelloWorld.runtimeconfig.dev.json
+/home/gnicolau/Desktop/USP/2020-2/SO/Projeto/HelloWorld/bin/Debug/netcoreapp2.1/HelloWorld.dll
+/home/gnicolau/Desktop/USP/2020-2/SO/Projeto/HelloWorld/bin/Debug/netcoreapp2.1/HelloWorld.pdb
+/home/gnicolau/Desktop/USP/2020-2/SO/Projeto/HelloWorld/obj/Debug/netcoreapp2.1/HelloWorld.csprojAssemblyReference.cache
+/home/gnicolau/Desktop/USP/2020-2/SO/Projeto/HelloWorld/obj/Debug/netcoreapp2.1/HelloWorld.csproj.CoreCompileInputs.cache
+/home/gnicolau/Desktop/USP/2020-2/SO/Projeto/HelloWorld/obj/Debug/netcoreapp2.1/HelloWorld.AssemblyInfoInputs.cache
+/home/gnicolau/Desktop/USP/2020-2/SO/Projeto/HelloWorld/obj/Debug/netcoreapp2.1/HelloWorld.AssemblyInfo.cs
+/home/gnicolau/Desktop/USP/2020-2/SO/Projeto/HelloWorld/obj/Debug/netcoreapp2.1/HelloWorld.dll
+/home/gnicolau/Desktop/USP/2020-2/SO/Projeto/HelloWorld/obj/Debug/netcoreapp2.1/HelloWorld.pdb

@@ -1,0 +1,57 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/gnicolau/Desktop/USP/2020-2/SO/Projeto/HelloWorld/HelloWorld.csproj": {}
+  },
+  "projects": {
+    "/home/gnicolau/Desktop/USP/2020-2/SO/Projeto/HelloWorld/HelloWorld.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/gnicolau/Desktop/USP/2020-2/SO/Projeto/HelloWorld/HelloWorld.csproj",
+        "projectName": "HelloWorld",
+        "projectPath": "/home/gnicolau/Desktop/USP/2020-2/SO/Projeto/HelloWorld/HelloWorld.csproj",
+        "packagesPath": "/home/gnicolau/.nuget/packages/",
+        "outputPath": "/home/gnicolau/Desktop/USP/2020-2/SO/Projeto/HelloWorld/obj/",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/usr/share/dotnet/sdk/NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "/home/gnicolau/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.1": {
+          "dependencies": {
+            "Microsoft.NETCore.App": {
+              "target": "Package",
+              "version": "[2.1.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    }
+  }
+}
