@@ -1,65 +1,111 @@
 ﻿using System;
 using System.Threading;
-namespace Program
 
+
+
+namespace TestThreads
 {
-    class Teste {
-        static Thread[] t = new Thread[5];
-        static Semaphore semaphore = new Semaphore(2,2);
+    class Program
+    {
+        public const int MAX = 999;
+        static SemaphoreSlim emptyMass = new SemaphoreSlim(MAX, MAX);
+        static SemaphoreSlim emptyMeat = new SemaphoreSlim(MAX, MAX);
+        static SemaphoreSlim emptyOil = new SemaphoreSlim(MAX, MAX);
+        static SemaphoreSlim fullMass = new SemaphoreSlim(0, MAX);
+        static SemaphoreSlim fullMeat = new SemaphoreSlim(0, MAX);
+        static SemaphoreSlim fullOil = new SemaphoreSlim(0, MAX);
+        static Semaphore mutex = new Semaphore(1,   1);
 
-        static Thread producerThread;
-        static Thread consumerThread;
-        // static Semaphore empty = new Semaphore(10, 10);
-        // static Semaphore full = new Semaphore(0, 10);
-        static SemaphoreSlim empty = new SemaphoreSlim(10, 10);
-        static SemaphoreSlim full = new SemaphoreSlim(0, 10);
-        static Semaphore mutex = new Semaphore(1, 1);
-        static void DoThing() {
-            Console.WriteLine("{0} = waiting", Thread.CurrentThread.Name);
-            semaphore.WaitOne();
-            Console.WriteLine("{0} begins!", Thread.CurrentThread.Name);
-            Thread.Sleep(1000);
-            Console.WriteLine("{0} releasing...", Thread.CurrentThread.Name);
-            semaphore.Release();
+
+        public static int QNT_Massa = 1;
+        public static int QNT_Oleo = 1;
+        public static int QNT_Carne = 1;
+
+        public static int Massa_ = 0;
+        public static int Oleo_ = 0;
+        public static int Carne_ = 0;
+        public static int Dinero = 0;
+
+        public static int Pastel_Carne = 0;
+
+        static void Main(string[] args)
+        {
+            Thread p0 = new Thread(Produtor0);
+            Thread p1 = new Thread(Produtor1);
+            Thread p2 = new Thread(Produtor2);
+            Thread c0 = new Thread(Consumidor_Pastel_Carne);
+
+            p0.Start(); p1.Start(); p2.Start();  c0.Start();
         }
-
-        static void Producer() {
-            while(true) {
+        static void Produtor0()
+        {
+            int item_massa = QNT_Massa;
+            while (true)
+            {
                 Console.WriteLine("Producing item...");
-                Console.WriteLine(empty.CurrentCount + " empty items on buffer");
-                empty.Wait();
+                Console.WriteLine(emptyMass.CurrentCount + " empty MASS items on buffer");
+                emptyMass.Wait(/*QNT_Massa*/);
                 mutex.WaitOne();
-                Thread.Sleep(500);
-                Console.WriteLine("Putting item in the buffer...");
+                Massa_ += QNT_Massa;
                 mutex.Release();
-                full.Release();
+                fullMass.Release();
+            }
+        }
+        static void Produtor1()
+        {
+            //int count = 1;
+            while (true)
+            {
+                Console.WriteLine("Producing item...");
+                Console.WriteLine(emptyOil.CurrentCount + " empty OIL items on buffer");
+                emptyOil.Wait(/*QNT_Massa*/);
+                mutex.WaitOne();
+                Oleo_ += QNT_Carne;
+                mutex.Release();
+                fullOil.Release();
+            }
+        }
+        static void Produtor2()
+        {
+            //int count = 1;
+            while (true)
+            {
+                Console.WriteLine("Producing item...");
+                Console.WriteLine(emptyMass.CurrentCount + " empty MEAT items on buffer");
+                emptyMeat.Wait(/*QNT_Massa*/);
+                mutex.WaitOne();
+                Carne_ += QNT_Massa;
+                mutex.Release();
+                fullMeat.Release();
             }
         }
 
-        static void Consumer() {
-            while(true) {
+        static void Consumidor_Pastel_Carne ()
+        {
+            while (true)
+            {
                 Console.WriteLine("Consuming item...");
-                Console.WriteLine(full.CurrentCount + " used items on buffer");
-                full.Wait();
+                Console.WriteLine(fullOil.CurrentCount + " used items on buffer");
+                Console.WriteLine(fullMass.CurrentCount + " used items on buffer");
+                Console.WriteLine(fullMeat.CurrentCount + " used items on buffer");
+                fullOil.Wait();
+                fullMeat.Wait();
+                fullMass.Wait();
                 mutex.WaitOne();
+
                 Console.WriteLine("Removing item from buffer...");
+                Massa_ -= 1; Carne_ -= 1; Oleo_ -= 1;
+
                 mutex.Release();
-                empty.Release();
+
+                emptyOil.Release();
+                emptyMeat.Release();
+                emptyMass.Release();
+
+                Pastel_Carne += 1;
+                Console.WriteLine("Pastel = " + Pastel_Carne);
             }
-        }
-
-        static void Main(string[] args) {
-            // for (int i=0; i<5; i++) {
-            //     t[i] = new Thread(DoThing);
-            //     t[i].Name = "Thread de número: " + i;
-            //     t[i].Start();
-            // }
-            // Console.Read();
-
-            producerThread = new Thread(Producer);
-            consumerThread = new Thread(Consumer);
-            producerThread.Start();
-            consumerThread.Start();
         }
     }
 }
+
