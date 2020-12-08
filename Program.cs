@@ -7,7 +7,7 @@ namespace TestThreads
 {
     class Program
     {
-        public const int MAX = 999;
+        public const int MAX = 1000;
         static SemaphoreSlim emptyMass = new SemaphoreSlim(MAX, MAX);
         static SemaphoreSlim emptyMeat = new SemaphoreSlim(MAX, MAX);
         static SemaphoreSlim emptyOil = new SemaphoreSlim(MAX, MAX);
